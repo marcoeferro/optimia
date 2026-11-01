@@ -9,7 +9,7 @@
 # =============================================================
 
 # --- Etapa 1: Builder ---
-FROM python:3.11-slim AS builder
+FROM python:3.15-slim AS builder
 
 WORKDIR /build
 
@@ -29,7 +29,7 @@ RUN : > README.md \
     && pip wheel --no-cache-dir --wheel-dir /build/wheels ".[dashboard]"
 
 # --- Etapa 2: Runtime ---
-FROM python:3.11-slim
+FROM python:3.15-slim
 
 # Etiqueta para limpiar sólo las imágenes viejas de este proyecto
 # (docker image prune --filter label=project=optimia-hv).
